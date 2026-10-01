@@ -1,0 +1,14 @@
+out/
+__pycache__/
+.venv/
+.env
+bot_config.json
+STOP
+doc/
+
+# 研究資料 (腳本進 git，抓下來的資料不進)
+research/prices/
+research/*.jsonl
+research/*.json
+research/*.log
+research/__pycache__/

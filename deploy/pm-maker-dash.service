@@ -1,0 +1,19 @@
+[Unit]
+Description=pm-maker dashboard (127.0.0.1:8787)
+After=network-online.target
+
+[Service]
+Type=simple
+User=pmmaker
+WorkingDirectory=/opt/pm-maker
+ExecStart=/opt/pm-maker/.venv/bin/python /opt/pm-maker/dashboard.py --port 8787
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/pm-maker/out
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

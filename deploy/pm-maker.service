@@ -1,0 +1,22 @@
+[Unit]
+Description=pm-maker Polymarket market-making bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pmmaker
+WorkingDirectory=/opt/pm-maker
+ExecStart=/opt/pm-maker/.venv/bin/python /opt/pm-maker/mm_bot.py run --live --yes
+Restart=always
+RestartSec=15
+Environment=PYTHONUNBUFFERED=1
+# 私鑰只在 /opt/pm-maker/.env (600, owner pmmaker)
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/pm-maker
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

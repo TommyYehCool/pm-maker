@@ -1,0 +1,20 @@
+[Unit]
+Description=pm-maker weather shadow (temperature markets, no orders)
+After=network-online.target
+
+[Service]
+Type=simple
+User=pmmaker
+WorkingDirectory=/opt/pm-maker
+ExecStart=/opt/pm-maker/.venv/bin/python /opt/pm-maker/weather_shadow.py run --every 15
+Restart=always
+RestartSec=30
+Environment=PYTHONUNBUFFERED=1
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/pm-maker
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

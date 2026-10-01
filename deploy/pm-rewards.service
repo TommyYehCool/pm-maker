@@ -1,0 +1,20 @@
+[Unit]
+Description=pm-maker liquidity rewards bot (shadow or live, see rewards_config.json)
+After=network-online.target
+
+[Service]
+Type=simple
+User=pmmaker
+WorkingDirectory=/opt/pm-maker
+ExecStart=/opt/pm-maker/.venv/bin/python /opt/pm-maker/rewards_bot.py run
+Restart=always
+RestartSec=15
+Environment=PYTHONUNBUFFERED=1
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/pm-maker
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
